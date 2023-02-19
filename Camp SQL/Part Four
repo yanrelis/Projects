@@ -226,3 +226,16 @@ Insert into AssignedToGroup values ('5555', '2262');
 Insert into AssignedToGroup values ('4442', '1000');
 Insert into AssignedToGroup values ('2233', '1000');
 
+Changes Made:
+●Changed the name of Group to CampGroup
+●Added the missing attributes to enrolled
+○Added   paidStatus VARCHAR(10), paymentDate date, enrollmentDate date);
+●BelongsTo(name, sessionID)
+○Made camp name into Session as a FK
+●Removed BelongsTo Table and SQL Statements
+●Removed BelongsToActivity Table and SQL Statements
+●Changed BelongsTo from (M:N) to (1:N) in Yed Live
+●Changed  BelongsToActivity from (M:N) to (1:N) in Yed Live
+●Added more data into the SQL statements in order to correctly answer the queries
+●Removed fname and name from Group and changed it to groupName (in tables and Yed
+Live)

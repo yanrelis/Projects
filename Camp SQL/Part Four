@@ -1,5 +1,4 @@
 # FINAL CAMP DATA
-
 Create table Camp (name varchar(30) primary key, location varchar(30), minAge 
 int(2), maxAge int(2), startTime time (6), endTime time (6), description text);
 Insert into Camp values ('Camp Walden', 'Diamond Point, NY', '8', '18', '08:00:00',
@@ -225,6 +224,37 @@ Insert into AssignedToGroup values ('7777', '2262');
 Insert into AssignedToGroup values ('5555', '2262');
 Insert into AssignedToGroup values ('4442', '1000');
 Insert into AssignedToGroup values ('2233', '1000');
+
+Table Report:
+Camp(name, location, minAge, maxAge, startTime, endTime, description)
+Employee(employeeID, fname, lname, age, startDate, endDate, position, campname)
+(Campname is a foreign key that refers to camp)
+Group(groupId, groupName, age, sessionID)
+(sessionID is a foreign key referring to session)
+Child(childID, fname, lname, age, nextYear)
+Parent(parentID, fname, lname, homePhone, workPhone, street, city, ZIP)
+Activity(activityID, name, minAge, maxAge, startTime, endTime, sessionID)
+(sessionID is a foreign key referring to session)
+Sessions(sessionID, startDate, endDate, campname)
+(Campname is a foreign key that refers to camp)
+FieldTrip(fieldTripID, date, busArrival, busDepart, designation, sessionID)
+(sessionID is a foreign key referring to session)
+Enrollment(childID, sessionID, paidStatus, paymentDate, enrollmentDate)
+(childID is from child, sessionID is from session)
+ScheduledFor(employeeID, sessionID)
+(employeeID is from employee, sessionID is from session)
+AssignedTo(employeeID, groupID)
+(employeeID is from employee, groupID is from group)
+TaughtBy(employeeID, activityID)
+(employeeID is from employee, activityID is from activity)
+SignedUp(activityID, childID)
+(activityID is from activity, childID is from child)
+Has(childID, parentID)
+(childID is from child, parentID is from parent)
+Enrolled(childID, sessionID)
+(childID is from Child, sessionID is from session)
+AssignedToGroup(childID, groupID)
+(childID is from Child, groupID is from group)
 
 Changes Made:
 ●Changed the name of Group to CampGroup

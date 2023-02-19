@@ -1,0 +1,228 @@
+# FINAL CAMP DATA
+
+Create table Camp (name varchar(30) primary key, location varchar(30), minAge 
+int(2), maxAge int(2), startTime time (6), endTime time (6), description text);
+Insert into Camp values ('Camp Walden', 'Diamond Point, NY', '8', '18', '08:00:00',
+'17:00:00', 'At Walden, you’re not just gaining an experience - you’re gaining a 
+second home. When you are a part of the Walden family, you are a part of something 
+much bigger, and you’re going to love how that feels.');
+Insert into Camp values ('Camp Schodack', 'Nassau, NY', '7', '16', '00:00:00', 
+'24:00:00', 'Most of our 160 staff grew up at Schodack and believe in what it 
+stands for. Schodack is committed to its small size, family atmosphere, and amazing
+traditions. We have never met children who are so friendly and so happy.');
+Insert into Camp values ('Camp Reece', 'Johnsburg, NY', '10', '17', '00:00:00', 
+'24:00:00', 'Camp Reece, located in the Adirondacks, is a sleep-away camp for 
+individuals that require differentiated instruction and modified activities to 
+ensure campers of all levels, abilities, and ages can participate fully and 
+successfully. Our idyllic natural setting and skilled staff provide campers with an
+immersive and engaging range of activities. We emphasize empowering our campers 
+with new skills, self-confidence, self-esteem, and social-emotional growth, all 
+while having fun!');
+Insert into Camp values ('Camp Lakota', 'Wurtsboro, NY', '10', '16', '07:45:00', 
+'21:30:00', 'Hello, Campers, Parents, and all future Lakota Families. Camp Lakota, 
+located just 90 miles from New York City, sits high atop the Wurtsboro Hills in the
+foothills of the Catskill Mountains. We are situated on 200 of the most beautiful 
+acres of land. Our magnificent Masten Lake with its sandy beaches and diverse 
+waterfront sports has helped make Lakota a family tradition for 90 years.');
+Create table Employee (employeeID varchar(4) primary key, fname varchar(30), lname 
+varchar(30), age int(2), startDate date, endDate date, position varchar(30), name 
+varchar(30) REFERENCES Camp(name));
+Insert into Employee values ('9872', 'Sandra', 'Gomez', '18', '2022-05-01', '2022-
+05-25', 'Camp Director', 'Camp Walden');
+Insert into Employee values ('2277', 'Anthony', 'Vargas', '17', '2022-05-02', 
+'2022-05-24', 'Senior Counselor', 'Camp Walden');
+Insert into Employee values ('9927', 'Carla', 'Frank', '18', '2022-05-01', '2022-
+05-24', 'Assistant Camp Director', 'Camp Walden');
+Insert into Employee values ('0021', 'Amy', 'Lee', '17', '2022-06-01', '2022-06-
+15', 'Activity Specialist', 'Camp Schodack');
+Insert into Employee values ('0030', 'Lee', 'Hong', '19', '2022-06-01', '2022-06-
+14', 'Senior Counselor', 'Camp Schodack');
+Insert into Employee values ('1025', 'Brandon', 'Garcia', '18', '2022-07-02', 
+'2022-07-18', 'Assistant Camp Director', 'Camp Reece');
+Insert into Employee values ('2367', 'Hugh', 'Williams', '17', '2022-07-03', '2022-
+07-19', 'Senior Counselor', 'Camp Reece');
+Insert into Employee values ('9191', 'Vanessa', 'Hudgens', '17', '2022-07-05', 
+'2022-07-18', 'Junior Counselor', 'Camp Reece');
+Insert into Employee values ('1138', 'Juan', 'Rodrigues', '16', '2022-07-01', 
+'2022-07-15', 'Junior Counselor', 'Camp Lakota');
+Insert into Employee values ('0000', 'Sofia', 'Vegara', '16', '2022-07-01', '2022-
+07-15', 'Senior Counselor', 'Camp Lakota');
+-- Named CampGroup since it cannot be named Group --
+Create table CampGroup (groupId varchar(4) primary key, groupName varchar (10), age
+int(2), sessionID varchar(4) references session(sessionID));
+Insert into CampGroup values ('7284', 'Group 1', '10', '9811');
+Insert into CampGroup values ('6281', 'Group 2', '9', '9909');
+Insert into CampGroup values ('1504', 'Group 3', '12', '5628');
+Insert into CampGroup values ('2262', 'Group 4', '11', '0929');
+Insert into CampGroup values ('1000', 'Group 5', '5', '9811');
+Insert into CampGroup values ('2000', 'Group 6', '6', '0929');
+Create table Child (childID varchar(4) primary key, fname varchar(30), lname 
+varchar(30), age int(2), nextYear int(2));
+Insert into Child values ('7777', 'Greg', 'Jones', '11', '7');
+Insert into Child values ('0978', 'Jeff', 'Jones', '12', '8');
+Insert into Child values ('5371', 'Isabelle', 'Jones', '38', NULL);
+Insert into Child values ('5555', 'Juan', 'Jones', '6', '2');
+Insert into Child values ('7878', 'Rebecca', 'Griffin', '12', '8');
+Insert into Child values ('1234', 'Hamphrey', 'Griffin', '6', '2');
+Insert into Child values ('5678', 'Owen', 'Griffin', '20', NULL);
+Insert into Child values ('3432', 'Marc', 'Jacobs', '9', '5');
+Insert into Child values ('4442', 'Gwen', 'Smith', '9', '5');
+Insert into Child values ('2233', 'Stephanie', 'Smith', '10', '6');
+Create table Parent (parentID varchar(4) primary key, fname varchar(30), lname 
+varchar(30), homePhone varchar(10), workPhone varchar(10), street varchar(20), city
+varchar(30), ZIP varchar(5));
+Insert into Parent values ('1101', 'Samantha', 'Jones', '3475556734', '7188348888',
+'542W Adams Road', 'NY', '11555');
+Insert into Parent values ('3463', 'Kevin', 'Griffin', '3477773464', '3473333333', 
+'236 Booth Street', 'NY', '11356');
+Insert into Parent values ('2839', 'Carl', 'Jacobs', '7187383473', '6462398528', 
+'892W Marc Street', 'NY', '11364');
+Insert into Parent values ('5656', 'Alexis', 'Smith', '7188973435', '7189998373', 
+'1234 Addleton Street', 'NY', '11234');
+Create table Activity (activityID varchar(4) primary key, name varchar(30), minAge 
+int(2), maxAge int(2), startTime time (6), endTime time (6), sessionID varchar(4) 
+references session(sessionID));
+Insert into Activity values ('0818', 'Canoeing', '8', '18', '12:00:00', '15:00:00',
+'9811');
+Insert into Activity values ('8837', 'Arts And Crafts', '8', '18', '10:00:00', 
+'14:00:00', '9909');
+Insert into Activity values ('8372', 'Swimming', '8', '18', '08:00:00', '09:00:00',
+'5628');
+Insert into Activity values ('0009', 'Stargazing', '8', '18', '20:00:00', 
+'00:00:00', '0929');
+Insert into Activity values ('3000', 'Bug Catching', '8', '18', '12:00:00', 
+'15:00:00', '9811');
+Insert into Activity values ('4000', 'Fossil Hunting', '8', '18', '20:00:00', 
+'00:00:00', '0929');
+Create table Sessions (sessionID varchar(4) primary key, startDate date, endDate 
+date, campname varchar(30) REFERENCES Camp(name));
+Insert into Sessions values ('9811', '2022-06-13', '2022-06-18', 'Camp Walden');
+Insert into Sessions values ('9909', '2022-06-13', '2022-06-18', 'Camp Schodack');
+Insert into Sessions values ('5628', '2022-07-12', '2022-07-19', 'Camp Reece');
+Insert into Sessions values ('0929', '2022-07-12', '2022-07-16', 'Camp Lakota');
+Create table FieldTrip (fieldTripID varchar(4) primary key, date date, busArrival 
+time (6), busDepart time (6), desitination varchar(30), sessionID varchar(4) 
+references session(sessionID));
+Insert into FieldTrip values ('1234', '2022-06-14', '14:00:00', '17:30:00', 'Zoo', 
+'9811');
+Insert into FieldTrip values ('5000', '2022-06-15', '13:45:00', '18:00:00', 
+'Aquarium', '9909');
+Insert into FieldTrip values ('7700', '2022-07-17', '12:15:00', '15:15:00', 
+'Museum', '5628');
+Insert into FieldTrip values ('0081', '2022-07-14', '11:00:00', '18:00:00', 
+'Playground', '0929');
+Create table Enrollment (`childID` varchar(4) NOT NULL, `sessionID` varchar(10) NOT
+NULL, PRIMARY KEY (`childID`, `sessionID`), paidStatus VARCHAR(10), paymentDate 
+date, enrollmentDate date);
+Insert into Enrollment values ('7777', '0929', 'Paid', '2022-06-13', '2022-06-13');
+Insert into Enrollment values ('7878', '5628', 'Paid', '2022-06-13', '2022-06-12');
+Insert into Enrollment values ('3432', '9909', 'Paid', '2022-07-01', '2022-07-01');
+Insert into Enrollment values ('2233', '9811', 'Paid', '2022-07-12', '2022-07-10');
+Insert into Enrollment values ('5555', '0929', 'Paid', '2022-07-11', '2022-07-09');
+Insert into Enrollment values ('0978', '0929', 'Paid', '2022-06-13', '2022-06-11');
+Insert into Enrollment values ('5371', '0929', 'Paid', '2022-06-11', '2022-06-10');
+Insert into Enrollment values ('1234', '5628', 'Unpaid', NULL, NULL);
+Insert into Enrollment values ('4442', '9811', 'Unpaid', NULL, NULL);
+Insert into Enrollment values ('5678', '5628', 'Unpaid', NULL, NULL);
+Create table SchedueledFor (`employeeID` varchar(4) NOT NULL, `sessionID` 
+varchar(4) NOT NULL, PRIMARY KEY (`employeeID`, `sessionID`));
+Insert into SchedueledFor values ('9872', '9811');
+Insert into SchedueledFor values ('0021', '9909');
+Insert into SchedueledFor values ('1025', '5628');
+Insert into SchedueledFor values ('1138', '0929');
+Insert into SchedueledFor values ('0000', '0929');
+Insert into SchedueledFor values ('2277', '9811');
+Insert into SchedueledFor values ('9927', '9811');
+Insert into SchedueledFor values ('0030', '9909');
+Insert into SchedueledFor values ('2367', '5628');
+Insert into SchedueledFor values ('9191', '5628');
+Create table AssignedTo (`employeeID` varchar(4) NOT NULL, `groupID` varchar(4) NOT
+NULL, PRIMARY KEY (`employeeID`, `groupID`));
+Insert into AssignedTo values ('9872', '7284');
+Insert into AssignedTo values ('0021', '6281');
+Insert into AssignedTo values ('1025', '1504');
+Insert into AssignedTo values ('1138', '2262');
+Insert into AssignedTo values ('0000', '2262');
+Insert into AssignedTo values ('2277', '7284');
+Insert into AssignedTo values ('9927', '7284');
+Insert into AssignedTo values ('0030', '6281');
+Insert into AssignedTo values ('2367', '1504');
+Insert into AssignedTo values ('9191', '1504');
+Insert into AssignedTo values ('9927', '1000');
+Insert into AssignedTo values ('9872', '1000');
+Insert into AssignedTo values ('1138', '2000');
+Insert into AssignedTo values ('0000', '2000');
+Create table TaughtBy (`employeeID` varchar(4) NOT NULL, `activityID` varchar(4) 
+NOT NULL, PRIMARY KEY (`employeeID`, `activityID`));
+Insert into TaughtBy values ('9872', '0818');
+Insert into TaughtBy values ('0021', '8837');
+Insert into TaughtBy values ('1025', '8372');
+Insert into TaughtBy values ('1138', '0009');
+Insert into TaughtBy values ('0000', '0009');
+Insert into TaughtBy values ('2277', '0818');
+Insert into TaughtBy values ('9927', '0818');
+Insert into TaughtBy values ('0030', '8837');
+Insert into TaughtBy values ('2367', '8372');
+Insert into TaughtBy values ('9191', '8372');
+Insert into TaughtBy values ('9872', '3000');
+Insert into TaughtBy values ('9927', '3000');
+Insert into TaughtBy values ('1138', '4000');
+Insert into TaughtBy values ('0000', '4000');
+Create table SignedUp (`activityID` varchar(4) NOT NULL, `childID` varchar(4) NOT 
+NULL, PRIMARY KEY (`activityID`, `childID`));
+Insert into SignedUp values ('0810', '7777');
+Insert into SignedUp values ('8837', '7878');
+Insert into SignedUp values ('8372', '3432');
+Insert into SignedUp values ('0009', '2233');
+Insert into SignedUp values ('0009', '5555');
+Insert into SignedUp values ('0009', '0978');
+Insert into SignedUp values ('0009', '5371');
+Insert into SignedUp values ('8372', '1234');
+Insert into SignedUp values ('0009', '4442');
+Insert into SignedUp values ('8372', '5678');
+Insert into SignedUp values ('3000', '4442');
+Insert into SignedUp values ('3000', '2233');
+Insert into SignedUp values ('4000', '7777');
+Insert into SignedUp values ('4000', '5555');
+Create table Has (`childID` varchar(4) NOT NULL, `parentID` varchar(4) NOT NULL, 
+PRIMARY KEY (`childID`, `parentID`));
+Insert into Has values ('7777', '1101');
+Insert into Has values ('7878', '3463');
+Insert into Has values ('3432', '2839');
+Insert into Has values ('2233', '5656');
+Insert into Has values ('5555', '1101');
+Insert into Has values ('0978', '1101');
+Insert into Has values ('5371', '1101');
+Insert into Has values ('1234', '3463');
+Insert into Has values ('4442', '5656');
+Insert into Has values ('5678', '3463');
+Create table Enrolled (`childID` varchar(4) NOT NULL, `sessionID` varchar(4) NOT 
+NULL, PRIMARY KEY (`childID`, `sessionID`), paidStatus VARCHAR(10), paymentDate 
+date, enrollmentDate date);
+Insert into Enrolled values ('7777', '0929', 'Paid', '2022-06-13', '2022-06-13');
+Insert into Enrolled values ('7878', '5628', 'Paid', '2022-06-13', '2022-06-12');
+Insert into Enrolled values ('3432', '9909', 'Paid', '2022-07-01', '2022-07-01');
+Insert into Enrolled values ('2233', '9811', 'Paid', '2022-07-12', '2022-07-10');
+Insert into Enrolled values ('5555', '0929', 'Paid', '2022-07-11', '2022-07-09');
+Insert into Enrolled values ('0978', '0929', 'Paid', '2022-06-13', '2022-06-11');
+Insert into Enrolled values ('5371', '0929', 'Paid', '2022-06-11', '2022-06-10');
+Insert into Enrolled values ('1234', '5628', 'Unpaid', NULL, NULL);
+Insert into Enrolled values ('4442', '9811', 'Unpaid', NULL, NULL);
+Insert into Enrolled values ('5678', '5628', 'Unpaid', NULL, NULL);
+Create table AssignedToGroup (`childID` varchar(4) NOT NULL, `groupID` varchar(4) 
+NOT NULL, PRIMARY KEY (`childID`, `groupID`));
+Insert into AssignedToGroup values ('7777', '2000');
+Insert into AssignedToGroup values ('7878', '6281');
+Insert into AssignedToGroup values ('3432', '1504');
+Insert into AssignedToGroup values ('2233', '7284');
+Insert into AssignedToGroup values ('5555', '2000');
+Insert into AssignedToGroup values ('0978', '2262');
+Insert into AssignedToGroup values ('5371', '2262');
+Insert into AssignedToGroup values ('1234', '1504');
+Insert into AssignedToGroup values ('4442', '7284');
+Insert into AssignedToGroup values ('5678', '1504');
+Insert into AssignedToGroup values ('7777', '2262');
+Insert into AssignedToGroup values ('5555', '2262');
+Insert into AssignedToGroup values ('4442', '1000');
+Insert into AssignedToGroup values ('2233', '1000');
+

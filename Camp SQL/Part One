@@ -1,7 +1,10 @@
+Design and implement a relational database that allows the lead staff to track the number of kids registered for each session, their group placement, 
+and the identity and numbers of staffers such as counselors and activity specialists, assigned to groups and activities.
+This allows the lead staff to confirm that they conform to legal requirements in terms of staffing, and have someone to teach each activity. 
+
 # Identify the entities and attributes that you will need in your database. Your report should clearly list each entity, its attributes, 
 # and general data types for each attribute (integer, floating point, date, text, etc - you don't need to know the SQL specific types). 
 # Also list sample data for each entity, preferably 4 or 5 sets of values. You will find these useful later when you are loading your database. 
-
 
 Camps
 Data format: camp name (text), location (text), minimum age (integer), maximum age (integer),
